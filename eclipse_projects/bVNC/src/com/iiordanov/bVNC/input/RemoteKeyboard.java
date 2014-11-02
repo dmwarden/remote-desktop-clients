@@ -239,7 +239,7 @@ public abstract class RemoteKeyboard {
         }
         
         if (events != null) {
-            for (int i = 0; i < events.length; i++) {
+            for (int i = 0; i < events.length;) {
                 KeyEvent evt = events[i];
                 processLocalKeyEvent(evt.getKeyCode(), evt, additionalMetaState);
                 return true;

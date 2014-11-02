@@ -38,6 +38,7 @@ import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -132,7 +133,8 @@ public class aSPICE extends Activity implements MainConfiguration {
 
         buttonImportCa = (Button) findViewById(R.id.buttonImportCa);
         buttonImportCa.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @SuppressWarnings("deprecation")
+			@Override
             public void onClick(View view) {
                 aSPICE.this.updateSelectedFromView();
                 showDialog(R.layout.import_tls_ca_dialog);
@@ -256,7 +258,8 @@ public class aSPICE extends Activity implements MainConfiguration {
         // Define what happens when the Import/Export button is pressed.
         ((Button) findViewById(R.id.buttonImportExport))
                 .setOnClickListener(new View.OnClickListener() {
-                    @Override
+                    @SuppressWarnings("deprecation")
+					@Override
                     public void onClick(View v) {
                         android.util.Log.e(TAG, "import/export!!");
                         showDialog(R.layout.importexport);
@@ -387,7 +390,8 @@ public class aSPICE extends Activity implements MainConfiguration {
      * 
      * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
      */
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case R.id.itemSaveAsCopy:
