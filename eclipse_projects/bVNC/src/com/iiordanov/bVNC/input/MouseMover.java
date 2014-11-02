@@ -20,12 +20,12 @@
 
 package com.iiordanov.bVNC.input;
 
-import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.RemoteCanvasActivity;
-
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.MotionEvent;
+
+import com.iiordanov.bVNC.RemoteCanvas;
+import com.iiordanov.bVNC.RemoteCanvasActivity;
 
 /**
  * Specialization of panner that moves the mouse instead of panning the screen

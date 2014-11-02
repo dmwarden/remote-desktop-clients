@@ -18,11 +18,10 @@ package com.undatech.opaque.input;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
-import android.util.FloatMath;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
+import android.view.View;
 import android.view.ViewConfiguration;
 
 /**
@@ -191,8 +190,8 @@ class MyScaleGestureDetector extends ScaleGestureDetector {
     			case MotionEvent.ACTION_POINTER_UP:
     				if (mSloppyGesture) {
     					// Set focus point to the remaining finger
-    					int id = (((action & MotionEvent.ACTION_POINTER_ID_MASK)
-    							>> MotionEvent.ACTION_POINTER_ID_SHIFT) == 0) ? 1 : 0;
+    					int id = (((action & MotionEvent.ACTION_POINTER_INDEX_MASK)
+    							>> MotionEvent.ACTION_POINTER_INDEX_SHIFT) == 0) ? 1 : 0;
     					if (id == 0 || secondpointer) {
     						mFocusX = event.getX(id);
     						mFocusY = event.getY(id);
@@ -208,8 +207,8 @@ class MyScaleGestureDetector extends ScaleGestureDetector {
     				setContext(event);
 
     				// Set focus point to the remaining finger
-    				int id = (((action & MotionEvent.ACTION_POINTER_ID_MASK)
-    						>> MotionEvent.ACTION_POINTER_ID_SHIFT) == 0) ? 1 : 0;
+    				int id = (((action & MotionEvent.ACTION_POINTER_INDEX_MASK)
+    						>> MotionEvent.ACTION_POINTER_INDEX_SHIFT) == 0) ? 1 : 0;
     				if (id == 0 || secondpointer) {
     					mFocusX = event.getX(id);
     					mFocusY = event.getY(id);
@@ -387,7 +386,7 @@ class MyScaleGestureDetector extends ScaleGestureDetector {
         if (mCurrLen == -1) {
             final float cvx = mCurrFingerDiffX;
             final float cvy = mCurrFingerDiffY;
-            mCurrLen = FloatMath.sqrt(cvx*cvx + cvy*cvy);
+            mCurrLen = (float) Math.sqrt(cvx*cvx + cvy*cvy);
         }
         return mCurrLen;
     }
@@ -402,7 +401,7 @@ class MyScaleGestureDetector extends ScaleGestureDetector {
         if (mPrevLen == -1) {
             final float pvx = mPrevFingerDiffX;
             final float pvy = mPrevFingerDiffY;
-            mPrevLen = FloatMath.sqrt(pvx*pvx + pvy*pvy);
+            mPrevLen = (float) Math.sqrt(pvx*pvx + pvy*pvy);
         }
         return mPrevLen;
     }

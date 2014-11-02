@@ -20,13 +20,12 @@
 
 package com.undatech.opaque.input;
 
-import android.view.MotionEvent;
 import android.os.Vibrator;
+import android.view.MotionEvent;
 
 import com.undatech.opaque.R;
 import com.undatech.opaque.RemoteCanvas;
 import com.undatech.opaque.RemoteCanvasActivity;
-import com.undatech.opaque.input.RemotePointer;
 
 public class InputHandlerTouchpad extends InputHandlerGeneric {
 	static final String TAG = "InputHandlerTouchpad";
@@ -65,7 +64,7 @@ public class InputHandlerTouchpad extends InputHandlerGeneric {
 	@Override
 	public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         RemotePointer p = canvas.getPointer();
-        final int action = e2.getActionMasked();
+        //final int action = e2.getActionMasked();
         final int meta   = e2.getMetaState();
         
         // If we are scaling, allow panning around by moving two fingers around the screen

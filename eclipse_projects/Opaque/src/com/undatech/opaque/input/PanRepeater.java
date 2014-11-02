@@ -20,10 +20,9 @@
 
 package com.undatech.opaque.input;
 
-import com.undatech.opaque.RemoteCanvas;
-
 import android.os.Handler;
-import android.view.KeyEvent;
+
+import com.undatech.opaque.RemoteCanvas;
 
 public class PanRepeater implements Runnable {
 	

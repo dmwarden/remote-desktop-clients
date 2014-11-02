@@ -26,6 +26,9 @@ import java.util.Timer;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.RectF;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
@@ -46,18 +49,14 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.graphics.BitmapFactory;
-import android.graphics.Bitmap;
-import android.graphics.RectF;
 
-import com.undatech.opaque.R;
-import com.undatech.opaque.SpiceCommunicator;
+import com.undatech.opaque.dialogs.GetTextFragment;
 import com.undatech.opaque.input.RemoteKeyboard;
 import com.undatech.opaque.input.RemotePointer;
 import com.undatech.opaque.input.RemoteSpiceKeyboard;
 import com.undatech.opaque.input.RemoteSpicePointer;
-import com.undatech.opaque.dialogs.*;
 
+@SuppressWarnings("deprecation")
 public class RemoteCanvas extends ImageView implements SelectTextElementFragment.OnFragmentDismissedListener,
                                                            GetTextFragment.OnFragmentDismissedListener {
 	private final static String TAG = "RemoteCanvas";

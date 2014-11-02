@@ -3,13 +3,12 @@ package com.iiordanov.bVNC.input;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.ViewConfiguration;
 
-import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.bVNC.RemoteCanvas;
+import com.iiordanov.bVNC.RfbConnectable;
 
 public class RemoteVncPointer extends RemotePointer {
-    private static final String TAG = "RemotePointer";
+    static final String TAG = "RemotePointer";
     
     public static final int MOUSE_BUTTON_NONE = 0;
     public static final int MOUSE_BUTTON_LEFT = 1;

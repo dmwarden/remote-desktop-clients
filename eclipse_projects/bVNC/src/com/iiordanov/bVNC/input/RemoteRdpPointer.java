@@ -4,18 +4,17 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.input.RemoteVncPointer.MouseScrollRunnable;
+import com.iiordanov.bVNC.RfbConnectable;
 
 public class RemoteRdpPointer extends RemotePointer {
-    private static final String TAG = "RemoteRdpPointer";
+    static final String TAG = "RemoteRdpPointer";
 
     private final static int PTRFLAGS_WHEEL          = 0x0200;
     private final static int PTRFLAGS_WHEEL_NEGATIVE = 0x0100;
     public  final static int PTRFLAGS_DOWN           = 0x8000;
     
-    private final static int MOUSE_BUTTON_NONE       = 0x0000;
+    //private final static int MOUSE_BUTTON_NONE       = 0x0000;
     private final static int MOUSE_BUTTON_MOVE       = 0x0800;
     public final static int MOUSE_BUTTON_LEFT       = 0x1000;
     public final static int MOUSE_BUTTON_RIGHT      = 0x2000;

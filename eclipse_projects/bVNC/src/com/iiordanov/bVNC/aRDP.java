@@ -19,15 +19,20 @@
 
 package com.iiordanov.bVNC;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import android.app.Activity;
+import android.app.ActivityManager.MemoryInfo;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ActivityManager.MemoryInfo;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +44,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -46,15 +52,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.util.Log;
-import com.iiordanov.bVNC.Utils;
+
 import com.iiordanov.bVNC.dialogs.ImportExportDialog;
 import com.iiordanov.bVNC.dialogs.IntroTextDialog;
 import com.iiordanov.pubkeygenerator.GeneratePubkeyActivity;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * aRDP is the Activity for setting up RDP connections.
@@ -241,7 +242,8 @@ public class aRDP extends Activity implements MainConfiguration {
         
         // Define what happens when the Import/Export button is pressed.
         ((Button)findViewById(R.id.buttonImportExport)).setOnClickListener(new View.OnClickListener() {
-            @Override
+            @SuppressWarnings("deprecation")
+			@Override
             public void onClick(View v) {
                 android.util.Log.e(TAG, "import/export!!");
                 showDialog(R.layout.importexport);
@@ -319,7 +321,7 @@ public class aRDP extends Activity implements MainConfiguration {
         Dialog d = adb.setView(new ListView (this)).create();
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(d.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.FILL_PARENT;
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         d.show();
         d.getWindow().setAttributes(lp);
@@ -350,7 +352,8 @@ public class aRDP extends Activity implements MainConfiguration {
     /* (non-Javadoc)
      * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
      */
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
         {
@@ -477,7 +480,9 @@ public class aRDP extends Activity implements MainConfiguration {
         View v    = getWindow().getDecorView().findViewById(android.R.id.content);
         Display d = getWindowManager().getDefaultDisplay();
         int bottom = v.getBottom();
-        int height = d.getHeight();
+        Point outSize = new Point();
+        d.getSize(outSize);
+        int height = outSize.y;
         
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             android.view.ViewConfiguration vc = ViewConfiguration.get(this);
@@ -497,7 +502,9 @@ public class aRDP extends Activity implements MainConfiguration {
         View v    = getWindow().getDecorView().findViewById(android.R.id.content);
         Display d = getWindowManager().getDefaultDisplay();
         int right = v.getRight();
-        int width = d.getWidth();
+        Point outSize = new Point();
+        d.getSize(outSize);
+        int width = outSize.x;
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             android.view.ViewConfiguration vc = ViewConfiguration.get(this);
             if (vc.hasPermanentMenuKey())

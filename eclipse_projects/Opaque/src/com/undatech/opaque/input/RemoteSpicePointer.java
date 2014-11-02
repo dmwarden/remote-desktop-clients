@@ -27,7 +27,7 @@ import com.undatech.opaque.RemoteCanvas;
 import com.undatech.opaque.SpiceCommunicator;
 
 public class RemoteSpicePointer implements RemotePointer {
-	private static final String TAG = "RemoteSpicePointer";
+	static final String TAG = "RemoteSpicePointer";
 
 	public static final int SPICE_MOUSE_BUTTON_MOVE   = 0;
 	public static final int SPICE_MOUSE_BUTTON_LEFT   = 1;
@@ -46,7 +46,7 @@ public class RemoteSpicePointer implements RemotePointer {
 	private int pointerMask = 0;
 
 	private RemoteCanvas canvas;
-	private Handler handler;
+	//private Handler handler;
 	private SpiceCommunicator spicecomm;
 
 	// Indicates if the camera button is pressed.
@@ -60,7 +60,7 @@ public class RemoteSpicePointer implements RemotePointer {
 	public RemoteSpicePointer (SpiceCommunicator spicecomm, RemoteCanvas canvas, Handler handler) {
 		this.spicecomm = spicecomm;
 		this.canvas    = canvas;
-		this.handler   = handler;
+		//this.handler   = handler;
 		pointerX  = canvas.getDesktopWidth() /2;
 		pointerY  = canvas.getDesktopHeight()/2;
 	}

@@ -32,11 +32,6 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
 
-import com.iiordanov.pubkeygenerator.EntropyDialog;
-import com.iiordanov.pubkeygenerator.EntropyView;
-import com.iiordanov.pubkeygenerator.OnEntropyGatheredListener;
-import com.iiordanov.pubkeygenerator.PubkeyDatabase;
-import com.iiordanov.pubkeygenerator.PubkeyUtils;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -46,6 +41,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.text.ClipboardManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
@@ -58,12 +54,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.text.ClipboardManager;
+import android.widget.Toast;
 
+@SuppressWarnings("deprecation")
 public class GeneratePubkeyActivity extends Activity implements OnEntropyGatheredListener {
 	public final static String TAG = "GeneratePubkeyActivity";
 

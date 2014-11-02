@@ -33,11 +33,10 @@ import android.view.ScaleGestureDetector;
 import com.undatech.opaque.Constants;
 import com.undatech.opaque.RemoteCanvas;
 import com.undatech.opaque.RemoteCanvasActivity;
-import com.undatech.opaque.input.RemotePointer;
 
 abstract class InputHandlerGeneric extends GestureDetector.SimpleOnGestureListener 
 										   implements InputHandler, ScaleGestureDetector.OnScaleGestureListener {
-	private static final String TAG = "InputHandlerGeneric";
+	static final String TAG = "InputHandlerGeneric";
 
 	protected GestureDetector gestureDetector;
 	protected MyScaleGestureDetector scalingGestureDetector;

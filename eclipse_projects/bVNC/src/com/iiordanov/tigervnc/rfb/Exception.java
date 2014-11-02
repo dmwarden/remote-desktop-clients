@@ -19,5 +19,10 @@
 package com.iiordanov.tigervnc.rfb;
 
 public class Exception extends com.iiordanov.tigervnc.rdr.Exception {
-  public Exception(String s) { super(s); }
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public Exception(String s) { super(s); }
 }

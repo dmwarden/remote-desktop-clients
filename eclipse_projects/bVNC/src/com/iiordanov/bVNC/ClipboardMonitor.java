@@ -19,19 +19,19 @@
 
 package com.iiordanov.bVNC;
 
-import java.io.IOException;
 import java.util.TimerTask;
+
 import android.content.Context;
 import android.text.ClipboardManager;
-import android.util.Log;
 
 /*
  * This is a TimerTask which checks the clipboard for changes, and if
  * a change is detected, sends the new contents to the VNC server.
  */
 
+@SuppressWarnings("deprecation")
 public class ClipboardMonitor extends TimerTask {
-    private String TAG = "ClipboardMonitor";
+    String TAG = "ClipboardMonitor";
     private Context context;
     ClipboardManager clipboard;
     private String knownClipboardContents;

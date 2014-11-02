@@ -20,9 +20,8 @@
 
 package com.undatech.opaque.input;
 
-import android.graphics.PointF;
-import android.view.MotionEvent;
 import android.os.Vibrator;
+import android.view.MotionEvent;
 
 import com.undatech.opaque.R;
 import com.undatech.opaque.RemoteCanvas;

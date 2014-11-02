@@ -24,7 +24,8 @@ package com.iiordanov.tigervnc.rfb;
 
 import android.graphics.Color;
 
-import com.iiordanov.tigervnc.rdr.*;
+import com.iiordanov.tigervnc.rdr.InStream;
+import com.iiordanov.tigervnc.rdr.OutStream;
 
 public class PixelFormat {
 
@@ -159,7 +160,7 @@ public class PixelFormat {
     } else {
       // Generic code
       int p, r, g, b;
-      int[] rgb = new int[4];
+      //int[] rgb = new int[4];
       
       int i = srcPtr; int j = dstPtr;
       while (i < pixels) {
@@ -179,7 +180,7 @@ public class PixelFormat {
   public void rgbFromBuffer(byte[] dst, int dstPtr, byte[] src, int srcPtr, int pixels, Color cm)
   {
     int p;
-    byte r, g, b;
+    //byte r, g, b;
   
     for (int i=0; i < pixels; i++) {
       p = pixelFromBuffer(src, srcPtr); 

@@ -21,7 +21,9 @@
 //
 
 package com.iiordanov.tigervnc.rfb;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class Security {
 
@@ -75,8 +77,8 @@ public class Security {
     List<Integer> result = new ArrayList<Integer>();
 
     result.add(secTypeVeNCrypt);
-    for (Iterator i = enabledSecTypes.iterator(); i.hasNext(); ) {
-      int refType = (Integer)i.next();
+    for (Iterator<Integer> i = enabledSecTypes.iterator(); i.hasNext(); ) {
+      int refType = i.next();
       if (refType < 0x100)
         result.add(refType);
     }
@@ -88,8 +90,8 @@ public class Security {
   {
     List<Integer> result = new ArrayList<Integer>();
 
-    for (Iterator i = enabledSecTypes.iterator(); i.hasNext(); ) {
-      int refType = (Integer)i.next();
+    for (Iterator<Integer> i = enabledSecTypes.iterator(); i.hasNext(); ) {
+      int refType = i.next();
       if (refType != secTypeVeNCrypt) /* Do not include VeNCrypt to avoid loops */
         result.add(refType);
     }
@@ -100,8 +102,8 @@ public class Security {
   public static final void EnableSecType(int secType)
   {
 
-    for (Iterator i = enabledSecTypes.iterator(); i.hasNext(); )
-      if ((Integer)i.next() == secType)
+    for (Iterator<Integer> i = enabledSecTypes.iterator(); i.hasNext(); )
+      if (i.next() == secType)
         return;
 
     enabledSecTypes.add(secType);
@@ -109,10 +111,10 @@ public class Security {
 
   public boolean IsSupported(int secType)
   {
-    Iterator i;
+    Iterator<Integer> i;
   
     for (i = enabledSecTypes.iterator(); i.hasNext(); )
-     if ((Integer)i.next() == secType)
+     if (i.next() == secType)
        return true;
     if (secType == secTypeVeNCrypt)
      return true;

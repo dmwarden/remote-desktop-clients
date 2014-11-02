@@ -18,8 +18,9 @@
 
 package com.iiordanov.tigervnc.rfb;
 
-import com.iiordanov.tigervnc.rdr.*;
-import java.util.*;
+import java.util.Iterator;
+
+import com.iiordanov.tigervnc.rdr.OutStream;
 
 public class CMsgWriterV3 extends CMsgWriter {
 
@@ -53,7 +54,7 @@ public class CMsgWriterV3 extends CMsgWriter {
       os.writeU8(layout.num_screens());
       os.pad(1);
     
-    for (Iterator iter = layout.screens.iterator(); iter.hasNext(); ) {
+    for (Iterator<Screen> iter = layout.screens.iterator(); iter.hasNext(); ) {
       Screen refScreen = (Screen)iter.next();
         os.writeU32(refScreen.id);
         os.writeU16(refScreen.dimensions.tl.x);

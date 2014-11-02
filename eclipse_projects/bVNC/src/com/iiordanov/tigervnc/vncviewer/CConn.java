@@ -31,28 +31,41 @@
 
 package com.iiordanov.tigervnc.vncviewer;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.jar.Attributes;
-import java.util.jar.Manifest;
-import java.net.URL;
-import java.util.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Iterator;
 
 import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+import com.iiordanov.bVNC.BuildConfig;
 import com.iiordanov.bVNC.AbstractConnectionBean;
 import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.AbstractBitmapData;
 import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.bVNC.input.RemoteKeyboard;
-import com.iiordanov.tigervnc.rdr.*;
-import com.iiordanov.tigervnc.rfb.*;
+import com.iiordanov.tigervnc.rdr.JavaInStream;
+import com.iiordanov.tigervnc.rdr.JavaOutStream;
+import com.iiordanov.tigervnc.rfb.CConnection;
+import com.iiordanov.tigervnc.rfb.Encodings;
 import com.iiordanov.tigervnc.rfb.Exception;
+import com.iiordanov.tigervnc.rfb.Hostname;
+import com.iiordanov.tigervnc.rfb.Keysyms;
+import com.iiordanov.tigervnc.rfb.LogWriter;
+import com.iiordanov.tigervnc.rfb.PixelFormat;
+import com.iiordanov.tigervnc.rfb.Point;
+import com.iiordanov.tigervnc.rfb.Rect;
+import com.iiordanov.tigervnc.rfb.Screen;
+import com.iiordanov.tigervnc.rfb.ScreenSet;
+import com.iiordanov.tigervnc.rfb.Security;
+import com.iiordanov.tigervnc.rfb.UnicodeToKeysym;
+import com.iiordanov.tigervnc.rfb.UserMsgBox;
+import com.iiordanov.tigervnc.rfb.UserPasswdGetter;
+import com.iiordanov.tigervnc.rfb.VncAuth;
+import com.iiordanov.tigervnc.rfb.screenTypes;
 
 public class CConn extends CConnection
   implements UserPasswdGetter, UserMsgBox, RfbConnectable
@@ -162,8 +175,7 @@ public class CConn extends CConnection
   // a password from the user.
 
   public final boolean getUserPasswd(StringBuffer user, StringBuffer passwd) {
-    String title = ("VNC Authentication ["
-                    +csecurity.description() + "]");
+    //String title = ("VNC Authentication ["+csecurity.description() + "]");
     String passwordFileStr = ""; // TODO: viewer.passwordFile.getValue();
     //PasswdDialog dlg;    
 
@@ -188,23 +200,23 @@ public class CConn extends CConnection
       return true;
     }
 
-    if (user == null) {
+    //if (user == null) {
       //dlg = new PasswdDialog(title, (user == null), (passwd == null));
-    } else {
-      if ((passwd == null) && false /*TODO: viewer.sendLocalUsername.getValue()*/) {
-         user.append((String)System.getProperties().get("user.name"));
-         return true;
-      }
+    //} else {
+      //if ((passwd == null) && false /*TODO: viewer.sendLocalUsername.getValue()*/) {
+      //   user.append((String)System.getProperties().get("user.name"));
+      //   return true;
+      //}
       //dlg = new PasswdDialog(title, viewer.sendLocalUsername.getValue(), 
       //   (passwd == null));
-    }
+    //}
     //if (!dlg.showDialog()) return false;
     if (user != null) {
-      if (false /*TODO: viewer.sendLocalUsername.getValue()*/) {
-         user.append((String)System.getProperties().get("user.name"));
-      } else {
+      //if (false /*TODO: viewer.sendLocalUsername.getValue()*/) {
+      //   user.append((String)System.getProperties().get("user.name"));
+      //} else {
          user.append(connection.getUserName());
-      }
+      //}
     }
     if (passwd != null)
       passwd.append(connection.getPassword());
@@ -318,7 +330,7 @@ public class CConn extends CConnection
         else if (layout.num_screens() != 1) {
 
           while (true) {
-            Iterator iter = layout.screens.iterator(); 
+            Iterator<Screen> iter = layout.screens.iterator(); 
             Screen screen = (Screen)iter.next();
         
             if (!iter.hasNext())
@@ -511,7 +523,8 @@ public class CConn extends CConnection
     if (formatChange) {
 
       /* Catch incorrect requestNewUpdate calls */
-      assert(pendingUpdate == false);
+      if (BuildConfig.DEBUG && pendingUpdate == false)
+    	  throw new AssertionError("Incorrect requestNewUpdate call.");
       // TODO: Implement
       
       if (fullColour) {

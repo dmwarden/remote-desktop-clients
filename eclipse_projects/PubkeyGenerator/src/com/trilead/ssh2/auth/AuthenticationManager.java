@@ -39,7 +39,7 @@ public class AuthenticationManager implements MessageHandler
 {
 	TransportManager tm;
 
-	Vector packets = new Vector();
+	Vector<byte[]> packets = new Vector<byte[]>();
 	boolean connectionClosed = false;
 
 	String banner;
@@ -87,7 +87,7 @@ public class AuthenticationManager implements MessageHandler
 				}
 			}
 			/* This sequence works with J2ME */
-			byte[] res = (byte[]) packets.firstElement();
+			byte[] res = packets.firstElement();
 			packets.removeElementAt(0);
 			return res;
 		}

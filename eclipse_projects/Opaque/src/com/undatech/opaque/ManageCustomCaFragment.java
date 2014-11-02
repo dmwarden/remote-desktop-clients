@@ -26,10 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.undatech.opaque.R;
-
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -38,11 +35,9 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.LinearLayout.LayoutParams;
 
 public class ManageCustomCaFragment extends DialogFragment {
 	public static String TAG = "ManageCustomCaFragment";
@@ -132,9 +127,10 @@ public class ManageCustomCaFragment extends DialogFragment {
 		Context context = getActivity();
 		File file = new File (caCertPath.getText().toString());
 		FileReader freader;
+		BufferedReader reader = null;
 		try {
 			freader = new FileReader(file);
-			BufferedReader reader = new BufferedReader(freader);
+			reader = new BufferedReader(freader);
 	        StringBuffer buf = new StringBuffer();
 	        String line = null;
 	        do {
@@ -149,6 +145,9 @@ public class ManageCustomCaFragment extends DialogFragment {
 	        caCert.setText(buf.toString());
 		} catch (FileNotFoundException e) {
 			Toast.makeText(context, R.string.ca_file_not_found, Toast.LENGTH_LONG).show();
+		} finally {
+			if (reader != null)
+				try {reader.close(); } catch (Exception ex) {}
 		}
 	}
     

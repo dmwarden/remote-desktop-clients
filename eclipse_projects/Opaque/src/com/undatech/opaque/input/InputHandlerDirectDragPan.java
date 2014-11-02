@@ -20,14 +20,13 @@
 
 package com.undatech.opaque.input;
 
-import android.view.MotionEvent;
 import android.os.Vibrator;
+import android.view.MotionEvent;
 
-import com.undatech.opaque.R;
 import com.undatech.opaque.Constants;
+import com.undatech.opaque.R;
 import com.undatech.opaque.RemoteCanvas;
 import com.undatech.opaque.RemoteCanvasActivity;
-import com.undatech.opaque.input.RemotePointer;
 
 public class InputHandlerDirectDragPan extends InputHandlerGeneric {
 	static final String TAG = "InputHandlerDirectDragPan";

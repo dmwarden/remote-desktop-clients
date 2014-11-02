@@ -29,16 +29,15 @@ import java.io.IOException;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
-import com.iiordanov.bVNC.input.RemotePointer;
-
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.util.Log;
+
+import com.iiordanov.bVNC.input.RemotePointer;
 
 public class Decoder {
     private final static String TAG = "Decoder";
@@ -1141,7 +1140,7 @@ public class Decoder {
             rfb.readFully(maskBuf);
 
             // Decode pixel data into softCursorPixels[].
-            byte pixByte, maskByte;
+            byte /*pixByte,*/ maskByte;
             int x, y, n, result;
             int i = 0;
             for (y = 0; y < height; y++) {

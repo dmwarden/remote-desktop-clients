@@ -3,9 +3,9 @@
  */
 package com.iiordanov.android.drawing;
 
-import android.graphics.Rect;
-
 import java.util.ArrayList;
+
+import android.graphics.Rect;
 
 import com.iiordanov.util.ObjectPool;
 
@@ -284,7 +284,8 @@ public class RectList {
         int count;
         static final int MAX_RECTS = 8;
         
-        NonOverlappingRects()
+        @SuppressWarnings("unchecked")
+		NonOverlappingRects()
         {
             rectEntries = new ObjectPool.Entry[MAX_RECTS];
         }

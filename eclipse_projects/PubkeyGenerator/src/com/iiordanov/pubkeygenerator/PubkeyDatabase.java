@@ -52,16 +52,12 @@ public class PubkeyDatabase extends RobustSQLiteOpenHelper {
 		KEY_TYPE_DSA = "DSA",
 		KEY_TYPE_IMPORTED = "IMPORTED";
 
-	private Context context;
-
 	static {
 		addTableName(TABLE_PUBKEYS);
 	}
 
 	public PubkeyDatabase(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);
-
-		this.context = context;
 	}
 
 	@Override

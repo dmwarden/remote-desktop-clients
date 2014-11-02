@@ -10,10 +10,10 @@
 
 package com.iiordanov.bVNC.input;
 
-import com.freerdp.freerdpcore.R;
-
 import android.content.Context;
 import android.view.KeyEvent;
+
+import com.freerdp.freerdpcore.R;
 
 public class RdpKeyboardMapper
 {

@@ -19,5 +19,10 @@
 package com.iiordanov.tigervnc.rfb;
 
 public class ConnFailedException extends Exception {
-  public ConnFailedException(String s) { super(s); }
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public ConnFailedException(String s) { super(s); }
 }

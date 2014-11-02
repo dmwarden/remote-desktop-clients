@@ -19,12 +19,6 @@
 
 package com.iiordanov.bVNC.dialogs;
 
-import com.iiordanov.bVNC.bVNC;
-import com.iiordanov.bVNC.ConnectionBean;
-import com.iiordanov.bVNC.R;
-import com.iiordanov.util.RandomString;
-import com.iiordanov.bVNC.Constants;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -37,12 +31,18 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ToggleButton;
+
+import com.iiordanov.bVNC.ConnectionBean;
+import com.iiordanov.bVNC.Constants;
+import com.iiordanov.bVNC.R;
+import com.iiordanov.bVNC.bVNC;
+import com.iiordanov.util.RandomString;
 
 
 /**
@@ -228,7 +228,7 @@ public class AutoXCustomizeDialog extends AlertDialog {
                                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.dimAmount = 1.0f;
-        lp.width     = LayoutParams.FILL_PARENT;
+        lp.width     = LayoutParams.MATCH_PARENT;
         lp.height    = LayoutParams.WRAP_CONTENT;
         getWindow().setAttributes(lp);
 

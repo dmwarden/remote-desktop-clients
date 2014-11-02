@@ -19,7 +19,12 @@
 package com.iiordanov.tigervnc.rdr;
 
 public class EndOfStream extends Exception {
-  public EndOfStream() {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public EndOfStream() {
     super("EndOfStream");
   }
 }

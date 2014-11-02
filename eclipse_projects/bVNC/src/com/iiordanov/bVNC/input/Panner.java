@@ -20,13 +20,12 @@
 
 package com.iiordanov.bVNC.input;
 
-import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.RemoteCanvasActivity;
-
 import android.graphics.PointF;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.util.Log;
+
+import com.iiordanov.bVNC.RemoteCanvas;
+import com.iiordanov.bVNC.RemoteCanvasActivity;
 
 /**
  * Handles panning the screen continuously over a period of time
@@ -41,7 +40,7 @@ public class Panner implements Runnable {
     VelocityUpdater updater;
     final int freq = 10;
     
-    private static final String TAG = "PANNER";
+    static final String TAG = "PANNER";
     
     /**
      * Specify how the panning velocity changes over time

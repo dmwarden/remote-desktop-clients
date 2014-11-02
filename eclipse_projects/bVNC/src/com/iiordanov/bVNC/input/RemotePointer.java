@@ -1,12 +1,12 @@
 package com.iiordanov.bVNC.input;
 
-import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.RfbConnectable;
-
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
+
+import com.iiordanov.bVNC.RemoteCanvas;
+import com.iiordanov.bVNC.RfbConnectable;
 
 public abstract class RemotePointer {
     

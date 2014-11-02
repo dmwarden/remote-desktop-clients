@@ -20,12 +20,9 @@
 
 package com.undatech.opaque;
 
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.List;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Handler;
 

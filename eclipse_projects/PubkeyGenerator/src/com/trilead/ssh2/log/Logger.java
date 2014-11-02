@@ -24,12 +24,12 @@ public class Logger
 	
 	private String className;
 
-	public final static Logger getLogger(Class x)
+	public final static Logger getLogger(Class<?> x)
 	{
 		return new Logger(x);
 	}
 
-	public Logger(Class x)
+	public Logger(Class<?> x)
 	{
 		this.className = x.getName();
 	}

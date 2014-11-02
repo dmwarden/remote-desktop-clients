@@ -19,5 +19,10 @@
 package com.iiordanov.tigervnc.rfb;
 
 public class AuthFailureException extends Exception {
-  public AuthFailureException(String s) { super(s); }
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public AuthFailureException(String s) { super(s); }
 }

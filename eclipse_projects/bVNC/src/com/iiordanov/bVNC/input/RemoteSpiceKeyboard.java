@@ -37,7 +37,7 @@ import com.iiordanov.bVNC.RemoteCanvas;
 import com.iiordanov.bVNC.SpiceCommunicator;
 
 public class RemoteSpiceKeyboard extends RemoteKeyboard {
-	private final static String TAG = "RemoteSpiceKeyboard";
+	final static String TAG = "RemoteSpiceKeyboard";
 	private HashMap<Integer, Integer[]> table;
     final static int SCANCODE_SHIFT_MASK = 0x10000;
     final static int SCANCODE_ALTGR_MASK = 0x20000;

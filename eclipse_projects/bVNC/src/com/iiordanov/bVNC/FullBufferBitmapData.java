@@ -24,10 +24,7 @@ import java.util.Arrays;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
-import android.util.Log;
 
 class FullBufferBitmapData extends AbstractBitmapData {
     /**
@@ -42,7 +39,7 @@ class FullBufferBitmapData extends AbstractBitmapData {
     int dataHeight;
 
     class Drawable extends AbstractBitmapDrawable {
-        private final static String TAG = "Drawable";
+        final static String TAG = "Drawable";
         int drawWidth;
         int drawHeight; 
         int xo, yo;

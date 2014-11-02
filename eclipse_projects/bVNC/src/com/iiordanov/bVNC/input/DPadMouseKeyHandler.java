@@ -20,13 +20,13 @@
 
 package com.iiordanov.bVNC.input;
 
-import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.RemoteCanvasActivity;
-
 import android.graphics.PointF;
 import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+
+import com.iiordanov.bVNC.RemoteCanvas;
+import com.iiordanov.bVNC.RemoteCanvasActivity;
 
 /**
  * Input handlers delegate to this class to handle keystrokes; this detects keystrokes

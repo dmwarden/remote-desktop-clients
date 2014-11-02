@@ -20,8 +20,6 @@
 
 package com.undatech.opaque;
 
-import com.undatech.opaque.R;
-
 import android.graphics.Matrix;
 
 public class CanvasZoomer {

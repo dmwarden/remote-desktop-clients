@@ -83,7 +83,7 @@ public class RFBSecurityARD {
      */
     private static class DHResult {
         private byte[] publicKey;
-        private byte[] privateKey;
+        //private byte[] privateKey;
         private byte[] secretKey;
     };
 
@@ -195,7 +195,7 @@ public class RFBSecurityARD {
             // return the results
             DHResult result = new DHResult();
             result.publicKey = keyToBytes(keyPair.getPublic(), keyLength);
-            result.privateKey = keyToBytes(keyPair.getPrivate(), keyLength);
+            //result.privateKey = keyToBytes(keyPair.getPrivate(), keyLength);
             result.secretKey = keyAgreement.generateSecret();
 
             return result;

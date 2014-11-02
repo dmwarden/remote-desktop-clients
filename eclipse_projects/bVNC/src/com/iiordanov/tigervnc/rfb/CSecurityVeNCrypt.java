@@ -19,9 +19,12 @@
 
 package com.iiordanov.tigervnc.rfb;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-import com.iiordanov.tigervnc.rdr.*;
+import com.iiordanov.tigervnc.rdr.InStream;
+import com.iiordanov.tigervnc.rdr.OutStream;
 
 public class CSecurityVeNCrypt extends CSecurity {
 
@@ -128,7 +131,7 @@ public class CSecurityVeNCrypt extends CSecurity {
         if (!haveChosenType) {
           chosenType = Security.secTypeInvalid;
           int i;
-          Iterator j;
+          Iterator<Integer> j;
           List<Integer> secTypes = new ArrayList<Integer>();
 
           secTypes = Security.GetEnabledExtSecTypes();
@@ -136,7 +139,7 @@ public class CSecurityVeNCrypt extends CSecurity {
           /* Honor server's security type order */
           for (i = 0; i < nAvailableTypes; i++) {
             for (j = secTypes.iterator(); j.hasNext(); ) {
-              int refType = (Integer)j.next();
+              int refType = j.next();
                 if (refType == availableTypes[i]) {
                   chosenType = refType;
                   break;

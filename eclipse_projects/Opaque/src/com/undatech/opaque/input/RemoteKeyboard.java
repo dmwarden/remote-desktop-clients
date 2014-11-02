@@ -22,7 +22,6 @@ package com.undatech.opaque.input;
 
 import android.content.Context;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 
@@ -30,7 +29,7 @@ import com.undatech.opaque.RemoteCanvas;
 import com.undatech.opaque.SpiceCommunicator;
 
 public abstract class RemoteKeyboard {
-    private static final String TAG = "RemoteKeyboard";
+    static final String TAG = "RemoteKeyboard";
 
 	public final static int SCANCODE_LCTRL = 29;
 	public final static int SCANCODE_RCTRL = 97;

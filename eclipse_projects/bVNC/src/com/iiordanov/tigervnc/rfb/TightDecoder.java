@@ -22,13 +22,9 @@ package com.iiordanov.tigervnc.rfb;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.iiordanov.bVNC.AbstractBitmapData;
 import com.iiordanov.bVNC.RemoteCanvas;
 import com.iiordanov.tigervnc.rdr.InStream;
 import com.iiordanov.tigervnc.rdr.ZlibInStream;
-import java.util.ArrayList;
-import java.io.InputStream;
-import java.awt.*;
 
 public class TightDecoder extends Decoder {
 
@@ -125,7 +121,7 @@ public class TightDecoder extends Decoder {
   {
     InStream is = reader.getInStream();
     boolean cutZeros = false;
-    clientpf = handler.getPreferredPF();
+    //clientpf = handler.getPreferredPF();
     serverpf = handler.cp.pf();
     int bpp = serverpf.bpp;
     if (bpp == 32) {
@@ -136,7 +132,7 @@ public class TightDecoder extends Decoder {
 
     int comp_ctl = is.readU8();
 
-    boolean bigEndian = handler.cp.pf().bigEndian;
+    //boolean bigEndian = handler.cp.pf().bigEndian;
 
     // Flush zlib streams if we are told by the server to do so.
     for (int i = 0; i < 4; i++) {
@@ -414,7 +410,7 @@ public class TightDecoder extends Decoder {
   private CMsgReader reader;
   private ZlibInStream[] zis;
   private PixelFormat serverpf;
-  private PixelFormat clientpf;
+  //private PixelFormat clientpf;
   static LogWriter vlog = new LogWriter("TightDecoder");
 
 }

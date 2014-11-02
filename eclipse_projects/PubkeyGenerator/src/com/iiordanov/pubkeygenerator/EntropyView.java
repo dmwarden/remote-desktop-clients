@@ -19,8 +19,6 @@ package com.iiordanov.pubkeygenerator;
 
 import java.util.Vector;
 
-import com.iiordanov.pubkeygenerator.R;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;

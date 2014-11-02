@@ -19,7 +19,6 @@ package com.iiordanov.pubkeygenerator;
 
 import java.util.Map.Entry;
 
-import com.iiordanov.pubkeygenerator.XmlBuilder;
 import android.content.ContentValues;
 
 /**

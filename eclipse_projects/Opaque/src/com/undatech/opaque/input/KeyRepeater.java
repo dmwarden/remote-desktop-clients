@@ -20,8 +20,6 @@
 
 package com.undatech.opaque.input;
 
-import com.undatech.opaque.RemoteCanvas;
-
 import android.os.Handler;
 import android.view.KeyEvent;
 

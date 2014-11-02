@@ -6,11 +6,9 @@ package com.iiordanov.android.bc;
 
 import java.io.File;
 
-import com.iiordanov.bVNC.MainConfiguration;
-
-import android.content.Context;
-
 import android.os.Environment;
+
+import com.iiordanov.bVNC.MainConfiguration;
 
 /**
  * @author Michael A. MacDonald

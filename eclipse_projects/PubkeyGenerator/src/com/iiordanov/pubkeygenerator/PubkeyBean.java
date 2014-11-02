@@ -27,8 +27,6 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
 
-import com.iiordanov.pubkeygenerator.PubkeyDatabase;
-import com.iiordanov.pubkeygenerator.PubkeyUtils;
 import android.content.ContentValues;
 
 /**

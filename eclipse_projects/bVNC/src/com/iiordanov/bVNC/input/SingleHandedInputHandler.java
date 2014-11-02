@@ -9,8 +9,6 @@ import android.widget.RelativeLayout;
 import com.iiordanov.bVNC.R;
 import com.iiordanov.bVNC.RemoteCanvas;
 import com.iiordanov.bVNC.RemoteCanvasActivity;
-import com.iiordanov.bVNC.R.id;
-import com.iiordanov.bVNC.R.string;
 
 public class SingleHandedInputHandler extends TouchMouseSwipePanInputHandler {
     static final String TAG = "SingleHandedInputHandler";

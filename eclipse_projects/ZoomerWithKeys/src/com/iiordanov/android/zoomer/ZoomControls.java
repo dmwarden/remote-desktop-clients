@@ -39,7 +39,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ZoomButton;
@@ -121,12 +120,12 @@ public class ZoomControls extends LinearLayout {
     	disabled = false;
     }
 
-    private void fade(int visibility, float startAlpha, float endAlpha) {
+    /*private void fade(int visibility, float startAlpha, float endAlpha) {
         AlphaAnimation anim = new AlphaAnimation(startAlpha, endAlpha);
         anim.setDuration(500);
         startAnimation(anim);
         setVisibility(visibility);
-    }
+    }*/
     
     public void setIsZoomInEnabled(boolean isEnabled) {
         mZoomIn.setEnabled(isEnabled);

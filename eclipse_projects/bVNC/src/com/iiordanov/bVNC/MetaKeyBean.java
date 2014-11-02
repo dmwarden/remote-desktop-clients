@@ -23,11 +23,11 @@ package com.iiordanov.bVNC;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.view.KeyEvent;
+
 import com.antlersoft.android.dbimpl.NewInstance;
 import com.iiordanov.bVNC.input.RemoteKeyboard;
 import com.iiordanov.bVNC.input.RemoteVncPointer;
-
-import android.view.KeyEvent;
 
 /**
  * @author Michael A. MacDonald

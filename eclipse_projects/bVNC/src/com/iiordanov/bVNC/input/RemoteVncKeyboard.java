@@ -1,12 +1,11 @@
 package com.iiordanov.bVNC.input;
 
 import android.os.Handler;
-import android.view.InputDevice;
 import android.view.KeyEvent;
 
 import com.iiordanov.bVNC.MetaKeyBean;
-import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.bVNC.RemoteCanvas;
+import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.tigervnc.rfb.UnicodeToKeysym;
 
 public class RemoteVncKeyboard extends RemoteKeyboard {

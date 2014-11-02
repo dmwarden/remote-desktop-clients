@@ -14,7 +14,7 @@ import java.net.UnknownHostException;
 import java.security.SecureRandom;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Vector;
+import java.util.Locale;
 
 import com.trilead.ssh2.crypto.Base64;
 import com.trilead.ssh2.crypto.digest.Digest;
@@ -61,7 +61,7 @@ public class KnownHosts
 		}
 	}
 
-	private LinkedList publicKeys = new LinkedList();
+	private LinkedList<KnownHostsEntry> publicKeys = new LinkedList<KnownHostsEntry>();
 
 	public KnownHosts()
 	{
@@ -232,11 +232,11 @@ public class KnownHosts
 
 		synchronized (publicKeys)
 		{
-			Iterator i = publicKeys.iterator();
+			Iterator<KnownHostsEntry> i = publicKeys.iterator();
 			
 			while (i.hasNext())
 			{
-				KnownHostsEntry ke = (KnownHostsEntry) i.next();
+				KnownHostsEntry ke = i.next();
 
 				if (hostnameMatches(ke.patterns, remoteHostname) == false)
 					continue;
@@ -252,17 +252,17 @@ public class KnownHosts
 		return result;
 	}
 
-	private Vector getAllKeys(String hostname)
+	/*private Vector<Object> getAllKeys(String hostname)
 	{
-		Vector keys = new Vector();
+		Vector<Object> keys = new Vector<Object>();
 
 		synchronized (publicKeys)
 		{
-			Iterator i = publicKeys.iterator();
+			Iterator<KnownHostsEntry> i = publicKeys.iterator();
 
 			while (i.hasNext())
 			{
-				KnownHostsEntry ke = (KnownHostsEntry) i.next();
+				KnownHostsEntry ke = i.next();
 
 				if (hostnameMatches(ke.patterns, hostname) == false)
 					continue;
@@ -272,7 +272,7 @@ public class KnownHosts
 		}
 
 		return keys;
-	}
+	}*/
 
 	/**
 	 * Try to find the preferred order of hostkey algorithms for the given hostname.
@@ -320,7 +320,7 @@ public class KnownHosts
 		boolean isMatch = false;
 		boolean negate = false;
 
-		hostname = hostname.toLowerCase();
+		hostname = hostname.toLowerCase(Locale.US);
 
 		for (int k = 0; k < hostpatterns.length; k++)
 		{
@@ -362,7 +362,7 @@ public class KnownHosts
 			}
 			else
 			{
-				pattern = pattern.toLowerCase();
+				pattern = pattern.toLowerCase(Locale.US);
 
 				if ((pattern.indexOf('?') != -1) || (pattern.indexOf('*') != -1))
 				{
@@ -532,38 +532,40 @@ public class KnownHosts
 
 	private String[] recommendHostkeyAlgorithms(String hostname)
 	{
-		String preferredAlgo = null;
+		// Since preferredAlgo is not set, this is dead code and the routine could be removed. 
+		return null;
+		//String preferredAlgo = null;
 
-		Vector keys = getAllKeys(hostname);
+		//Vector keys = getAllKeys(hostname);
 
-		for (int i = 0; i < keys.size(); i++)
-		{
-			String thisAlgo = null;
-
-			if (keys.elementAt(i) instanceof RSAPublicKey)
-				thisAlgo = "ssh-rsa";
-			else if (keys.elementAt(i) instanceof DSAPublicKey)
-				thisAlgo = "ssh-dss";
-			else
-				continue;
-
-			if (preferredAlgo != null)
-			{
-				/* If we find different key types, then return null */
-
-				if (preferredAlgo.compareTo(thisAlgo) != 0)
-					return null;
-
-				/* OK, we found the same algo again, optimize */
-
-				continue;
-			}
-		}
+//		for (int i = 0; i < keys.size(); i++)
+//		{
+//			String thisAlgo = null;
+//
+//			if (keys.elementAt(i) instanceof RSAPublicKey)
+//				thisAlgo = "ssh-rsa";
+//			else if (keys.elementAt(i) instanceof DSAPublicKey)
+//				thisAlgo = "ssh-dss";
+//			else
+//				continue;
+//
+//			if (preferredAlgo != null)
+//			{
+//				/* If we find different key types, then return null */
+//
+//				if (preferredAlgo.compareTo(thisAlgo) != 0)
+//					return null;
+//
+//				/* OK, we found the same algo again, optimize */
+//
+//				continue;
+//			}
+//		}
 
 		/* If we did not find anything that we know of, return null */
 
-		if (preferredAlgo == null)
-			return null;
+		//if (preferredAlgo == null)
+		//	return null;
 
 		/* Now put the preferred algo to the start of the array.
 		 * You may ask yourself why we do it that way - basically, we could just
@@ -577,10 +579,11 @@ public class KnownHosts
 		 * if he/she wants to accept the new key.
 		 */
 
-		if (preferredAlgo.equals("ssh-rsa"))
-			return new String[] { "ssh-rsa", "ssh-dss" };
+		 
+		//if (preferredAlgo.equals("ssh-rsa"))
+		//	return new String[] { "ssh-rsa", "ssh-dss" };
 
-		return new String[] { "ssh-dss", "ssh-rsa" };
+		//return new String[] { "ssh-dss", "ssh-rsa" };
 	}
 
 	/**

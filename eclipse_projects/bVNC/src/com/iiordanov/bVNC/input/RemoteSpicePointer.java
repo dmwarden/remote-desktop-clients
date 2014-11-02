@@ -4,12 +4,11 @@ import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.bVNC.input.RemoteVncPointer.MouseScrollRunnable;
+import com.iiordanov.bVNC.RfbConnectable;
 
 public class RemoteSpicePointer extends RemotePointer {
-    private static final String TAG = "RemoteSpicePointer";
+    static final String TAG = "RemoteSpicePointer";
 
     public static final int SPICE_MOUSE_BUTTON_MOVE   = 0;
     public static final int SPICE_MOUSE_BUTTON_LEFT   = 1;

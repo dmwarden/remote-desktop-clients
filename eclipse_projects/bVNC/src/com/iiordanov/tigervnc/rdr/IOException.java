@@ -19,7 +19,11 @@
 package com.iiordanov.tigervnc.rdr;
 
 class IOException extends Exception {
-  public IOException(java.io.IOException ex_) {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+public IOException(java.io.IOException ex_) {
     super(ex_.toString());
     ex = ex_;
   }

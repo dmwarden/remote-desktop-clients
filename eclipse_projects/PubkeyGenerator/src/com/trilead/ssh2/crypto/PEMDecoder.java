@@ -10,16 +10,11 @@ import java.security.KeyPair;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
-import java.security.interfaces.RSAPrivateCrtKey;
 import java.security.spec.DSAPrivateKeySpec;
 import java.security.spec.DSAPublicKeySpec;
 import java.security.spec.InvalidKeySpecException;
-import java.security.spec.PKCS8EncodedKeySpec;
-import java.security.spec.RSAPrivateKeySpec;
-import java.security.spec.RSAPublicKeySpec;
 
 import com.iiordanov.pubkeygenerator.PubkeyDatabase;
-import com.iiordanov.pubkeygenerator.PubkeyUtils;
 import com.trilead.ssh2.crypto.cipher.AES;
 import com.trilead.ssh2.crypto.cipher.BlockCipher;
 import com.trilead.ssh2.crypto.cipher.CBCMode;

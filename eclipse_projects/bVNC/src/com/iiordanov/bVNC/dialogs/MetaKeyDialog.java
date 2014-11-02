@@ -21,21 +21,9 @@
 package com.iiordanov.bVNC.dialogs;
 
 import java.text.MessageFormat;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map.Entry;
-
-import com.iiordanov.bVNC.ConnectionBean;
-import com.iiordanov.bVNC.ConnectionSettable;
-import com.iiordanov.bVNC.MetaKeyBase;
-import com.iiordanov.bVNC.MetaKeyBean;
-import com.iiordanov.bVNC.MetaList;
-import com.iiordanov.bVNC.R;
-import com.iiordanov.bVNC.Utils;
-import com.iiordanov.bVNC.RemoteCanvasActivity;
-import com.iiordanov.bVNC.Database;
-import com.iiordanov.bVNC.input.RemoteKeyboard;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -49,17 +37,28 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.AdapterView;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.iiordanov.bVNC.ConnectionBean;
+import com.iiordanov.bVNC.ConnectionSettable;
+import com.iiordanov.bVNC.Database;
+import com.iiordanov.bVNC.MetaKeyBase;
+import com.iiordanov.bVNC.MetaKeyBean;
+import com.iiordanov.bVNC.MetaList;
+import com.iiordanov.bVNC.R;
+import com.iiordanov.bVNC.RemoteCanvasActivity;
+import com.iiordanov.bVNC.Utils;
+import com.iiordanov.bVNC.input.RemoteKeyboard;
 
 /**
  * @author Michael A. MacDonald
@@ -220,7 +219,7 @@ public class MetaKeyDialog extends Dialog implements ConnectionSettable {
                    WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.dimAmount = 1.0f;
-        lp.width     = LayoutParams.FILL_PARENT;
+        lp.width     = LayoutParams.MATCH_PARENT;
         lp.height    = LayoutParams.WRAP_CONTENT;
         getWindow().setAttributes(lp);
         

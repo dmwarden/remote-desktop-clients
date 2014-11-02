@@ -24,7 +24,6 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -35,14 +34,8 @@ import java.util.TimerTask;
 
 import org.apache.http.util.ByteArrayBuffer;
 
-import com.gstreamer.GStreamer;
-import com.iiordanov.android.zoomer.ZoomControls;
-import com.undatech.opaque.R;
-import com.undatech.opaque.input.*;
-
-import android.app.Activity;
-import android.app.Dialog;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -60,7 +53,6 @@ import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.inputmethod.InputMethodManager;
 import android.view.InputDevice;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -68,17 +60,26 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnKeyListener;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.view.View.OnKeyListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.iiordanov.android.zoomer.ZoomControls;
+import com.undatech.opaque.input.InputHandler;
+import com.undatech.opaque.input.InputHandlerDirectDragPan;
+import com.undatech.opaque.input.InputHandlerDirectSwipePan;
+import com.undatech.opaque.input.InputHandlerSingleHanded;
+import com.undatech.opaque.input.InputHandlerTouchpad;
+import com.undatech.opaque.input.RemoteKeyboard;
 
 
 public class RemoteCanvasActivity extends FragmentActivity implements OnKeyListener {   
@@ -350,7 +351,7 @@ public class RemoteCanvasActivity extends FragmentActivity implements OnKeyListe
 			replacer = getResources().getDrawable(R.drawable.showkeys);
 		else
 			replacer = getResources().getDrawable(R.drawable.hidekeys);
-		keyStow.setBackgroundDrawable(replacer);
+		keyStow.setBackground(replacer);
 
 		if (connection.getExtraKeysToggleType() == Constants.EXTRA_KEYS_OFF)
 			keyStow.setVisibility(View.GONE);
@@ -729,7 +730,7 @@ public class RemoteCanvasActivity extends FragmentActivity implements OnKeyListe
 	    Dialog d = adb.setView(new ListView (this)).create();
 	    WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
 	    lp.copyFrom(d.getWindow().getAttributes());
-	    lp.width = WindowManager.LayoutParams.FILL_PARENT;
+	    lp.width = WindowManager.LayoutParams.MATCH_PARENT;
 	    lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
 	    d.show();
 	    d.getWindow().setAttributes(lp);
@@ -960,6 +961,7 @@ public class RemoteCanvasActivity extends FragmentActivity implements OnKeyListe
 		return true;
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onOptionsItemSelected(MenuItem menuItem) {
 		int itemID = menuItem.getItemId();

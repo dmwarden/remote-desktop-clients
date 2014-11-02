@@ -141,7 +141,7 @@ public class TransportManager
 
 	Thread receiveThread;
 
-	Vector connectionMonitors = new Vector();
+	Vector<ConnectionMonitor> connectionMonitors = new Vector<ConnectionMonitor>();
 	boolean monitorsWereInformed = false;
 
 	/**
@@ -300,7 +300,7 @@ public class TransportManager
 
 		/* No check if we need to inform the monitors */
 
-		Vector monitors = null;
+		Vector<ConnectionMonitor> monitors = null;
 
 		synchronized (this)
 		{
@@ -312,7 +312,7 @@ public class TransportManager
 			if (monitorsWereInformed == false)
 			{
 				monitorsWereInformed = true;
-				monitors = (Vector) connectionMonitors.clone();
+				monitors = new Vector<ConnectionMonitor>(connectionMonitors);
 			}
 		}
 
@@ -636,11 +636,11 @@ public class TransportManager
 		}
 	}
 
-	public void setConnectionMonitors(Vector monitors)
+	public void setConnectionMonitors(Vector<ConnectionMonitor> monitors)
 	{
 		synchronized (this)
-		{
-			connectionMonitors = (Vector) monitors.clone();
+		{	
+			connectionMonitors = new Vector<ConnectionMonitor>(monitors);
 		}
 	}
 

@@ -18,10 +18,13 @@
 
 package com.iiordanov.tigervnc.rfb;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.tigervnc.rdr.*;
+import com.iiordanov.tigervnc.rdr.InStream;
+import com.iiordanov.tigervnc.rdr.OutStream;
 
 abstract public class CConnection extends CMsgHandler {
 
@@ -68,7 +71,7 @@ abstract public class CConnection extends CMsgHandler {
 
   private void processVersionMsg() {
     vlog.debug("reading protocol version");
-    Boolean done = new Boolean(true);
+    Boolean done = Boolean.valueOf(true);
     if (!cp.readVersion(is, done)) {
       state_ = RFBSTATE_INVALID;
       throw new Exception("reading version failed: not an RFB server?");
@@ -117,9 +120,9 @@ abstract public class CConnection extends CMsgHandler {
         throwConnFailedException();
 
       } else if (secType == Security.secTypeNone || secType == Security.secTypeVncAuth) {
-        Iterator i;
+        Iterator<Integer> i;
         for (i = secTypes.iterator(); i.hasNext(); ) {
-          int refType = (Integer)i.next();
+          int refType = i.next();
           if (refType == secType) {
             secType = refType;
             break;
@@ -151,8 +154,8 @@ abstract public class CConnection extends CMsgHandler {
         * It means server's order specifies priority.
         */
         if (secType == Security.secTypeInvalid) {
-          for (Iterator j = secTypes.iterator(); j.hasNext(); ) {
-            int refType = (Integer)j.next();
+          for (Iterator<Integer> j = secTypes.iterator(); j.hasNext(); ) {
+            int refType = j.next();
             if (refType == serverSecType) {
               secType = refType;
               break;
@@ -325,7 +328,7 @@ abstract public class CConnection extends CMsgHandler {
 
   protected void setState(int s) { state_ = s; }
 
-  private void throwAuthFailureException() {
+  /*private void throwAuthFailureException() {
     String reason;
     vlog.debug("state="+state()+", ver="+cp.majorVersion+"."+cp.minorVersion);
     if (state() == RFBSTATE_SECURITY_RESULT && !cp.beforeVersion(3,8)) {
@@ -336,7 +339,7 @@ abstract public class CConnection extends CMsgHandler {
     state_ = RFBSTATE_INVALID;
     vlog.error(reason);
     throw new AuthFailureException(reason);
-  }
+  }*/
 
   protected RemoteCanvas viewer;
   InStream is = null;

@@ -34,19 +34,14 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
-
-import com.undatech.opaque.R;
+import android.widget.GridView;
 
 public class ConnectionGridActivity extends Activity {
 	private static String TAG = "ConnectionGridActivity";

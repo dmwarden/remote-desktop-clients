@@ -27,6 +27,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
@@ -38,7 +39,8 @@ public class ConnectionListActivity extends ListActivity {
     
     Database database;
 
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         
@@ -73,7 +75,7 @@ public class ConnectionListActivity extends ListActivity {
                     R.id.list_text_address,
                     R.id.list_text_port,
                     R.id.list_text_repeater
-                });                                 // Parallel array of which template objects to bind to those columns.
+                }, CursorAdapter.FLAG_AUTO_REQUERY);                                 // Parallel array of which template objects to bind to those columns.
 
         // Bind to our new adapter.
         setListAdapter(adapter);

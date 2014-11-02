@@ -350,7 +350,7 @@ public class aSPICE extends Activity implements MainConfiguration {
         Dialog d = adb.setView(new ListView(this)).create();
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(d.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.FILL_PARENT;
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         d.show();
         d.getWindow().setAttributes(lp);
@@ -508,7 +508,9 @@ public class aSPICE extends Activity implements MainConfiguration {
         View v = getWindow().getDecorView().findViewById(android.R.id.content);
         Display d = getWindowManager().getDefaultDisplay();
         int bottom = v.getBottom();
-        int height = d.getHeight();
+        Point outSize = new Point();
+        d.getSize(outSize);
+        int height = outSize.y;
 
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             android.view.ViewConfiguration vc = ViewConfiguration.get(this);
@@ -528,7 +530,9 @@ public class aSPICE extends Activity implements MainConfiguration {
         View v = getWindow().getDecorView().findViewById(android.R.id.content);
         Display d = getWindowManager().getDefaultDisplay();
         int right = v.getRight();
-        int width = d.getWidth();
+        Point outSize = new Point();
+        d.getSize(outSize);
+        int width = outSize.x;
         if (android.os.Build.VERSION.SDK_INT >= 14) {
             android.view.ViewConfiguration vc = ViewConfiguration.get(this);
             if (vc.hasPermanentMenuKey())

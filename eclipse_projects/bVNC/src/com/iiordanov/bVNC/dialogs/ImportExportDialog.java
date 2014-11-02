@@ -20,6 +20,19 @@
 
 package com.iiordanov.bVNC.dialogs;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import org.xml.sax.SAXException;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -29,26 +42,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.antlersoft.android.contentxml.SqliteElement;
+import com.antlersoft.android.contentxml.SqliteElement.ReplaceStrategy;
 import com.iiordanov.android.bc.BCFactory;
 import com.iiordanov.bVNC.MainConfiguration;
 import com.iiordanov.bVNC.R;
 import com.iiordanov.bVNC.Utils;
-import com.antlersoft.android.contentxml.SqliteElement;
-import com.antlersoft.android.contentxml.SqliteElement.ReplaceStrategy;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-
-import org.xml.sax.SAXException;
 
 /**
  * @author Michael A. MacDonald

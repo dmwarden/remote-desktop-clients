@@ -21,7 +21,6 @@
 package com.undatech.opaque.input;
 
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 
 public interface RemotePointer {
 	public int getX();

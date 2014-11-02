@@ -4,7 +4,7 @@
 package com.iiordanov.android.bc;
 
 import android.content.Context;
-
+import android.os.Build;
 /**
  * Create interface implementations appropriate to the current version of the SDK;
  * implementations can allow use of higher-level SDK calls in .apk's that will still run
@@ -23,19 +23,11 @@ public class BCFactory {
     
     /**
      * This is here so checking the static doesn't get optimized away;
-     * note we can't use SDK_INT because that is too new
      * @return sdk version
      */
     int getSdkVersion()
     {
-        try
-        {
-            return Integer.parseInt(android.os.Build.VERSION.SDK);
-        }
-        catch (NumberFormatException nfe)
-        {
-            return 1;
-        }
+    	return Build.VERSION.SDK_INT;
     }
     
     /**
@@ -168,8 +160,7 @@ public class BCFactory {
         return bcMotionEvent;
     }
     
-    @SuppressWarnings("unchecked")
-    static private Class[] scaleDetectorConstructorArgs = new Class[] { Context.class, OnScaleGestureListener.class };
+    static private Class<?>[] scaleDetectorConstructorArgs = new Class[] { Context.class, OnScaleGestureListener.class };
     
     /**
      * Return an instance of an implementation of {@link IBCScaleGestureDetector} appropriate to the SDK of this device.

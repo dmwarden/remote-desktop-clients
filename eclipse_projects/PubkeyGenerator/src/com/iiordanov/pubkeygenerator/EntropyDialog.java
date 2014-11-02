@@ -17,8 +17,6 @@
 
 package com.iiordanov.pubkeygenerator;
 
-import com.iiordanov.pubkeygenerator.R;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;

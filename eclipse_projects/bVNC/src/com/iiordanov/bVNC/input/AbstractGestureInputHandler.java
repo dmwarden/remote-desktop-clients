@@ -24,7 +24,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
@@ -41,7 +40,7 @@ import com.iiordanov.bVNC.RemoteCanvasActivity;
  */
 abstract class AbstractGestureInputHandler extends GestureDetector.SimpleOnGestureListener 
                                            implements AbstractInputHandler, OnScaleGestureListener {
-    private static final String TAG = "AbstractGestureInputHandler";
+    static final String TAG = "AbstractGestureInputHandler";
 
     protected GestureDetector gestures;
     protected IBCScaleGestureDetector scaleGestures;

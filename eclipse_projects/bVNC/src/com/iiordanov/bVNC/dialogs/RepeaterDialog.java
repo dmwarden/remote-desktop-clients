@@ -20,9 +20,6 @@
 
 package com.iiordanov.bVNC.dialogs;
 
-import com.iiordanov.bVNC.R;
-import com.iiordanov.bVNC.bVNC;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -31,6 +28,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.iiordanov.bVNC.R;
+import com.iiordanov.bVNC.bVNC;
 
 /**
  * @author Michael A. MacDonald

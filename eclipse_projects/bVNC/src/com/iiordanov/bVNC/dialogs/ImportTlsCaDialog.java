@@ -25,22 +25,23 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.iiordanov.bVNC.ConnectionBean;
-import com.iiordanov.bVNC.R;
-import com.iiordanov.bVNC.aSPICE;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
+
+import com.iiordanov.bVNC.ConnectionBean;
+import com.iiordanov.bVNC.R;
+import com.iiordanov.bVNC.aSPICE;
 
 /**
  * @author Iordan K Iordanov
@@ -100,15 +101,16 @@ public class ImportTlsCaDialog extends AlertDialog {
         selected = mainConfigPage.getCurrentConnection();
         certSubject.setText(selected.getCertSubject());
         caCert.setText(selected.getCaCert());
-        caCertPath.setText("/sdcard/");
+        caCertPath.setText(Environment.getExternalStorageDirectory().getPath());
     }
     
     private void importCaCert () {
         File file = new File (caCertPath.getText().toString());
         FileReader freader;
+        BufferedReader reader = null;
         try {
             freader = new FileReader(file);
-            BufferedReader reader = new BufferedReader(freader);
+            reader = new BufferedReader(freader);
             StringBuffer buf = new StringBuffer();
             String line = null;
             do {
@@ -123,6 +125,9 @@ public class ImportTlsCaDialog extends AlertDialog {
             caCert.setText(buf.toString());
         } catch (FileNotFoundException e) {
             Toast.makeText(getContext(), R.string.spice_ca_file_not_found, Toast.LENGTH_LONG).show();
+        } finally {
+        	if (reader != null)
+        		try { reader.close(); } catch (Exception ex) {}
         }
     }
     
@@ -138,7 +143,7 @@ public class ImportTlsCaDialog extends AlertDialog {
                                WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         WindowManager.LayoutParams lp = getWindow().getAttributes();
         lp.dimAmount = 1.0f;
-        lp.width     = LayoutParams.FILL_PARENT;
+        lp.width     = LayoutParams.MATCH_PARENT;
         lp.height    = LayoutParams.WRAP_CONTENT;
         getWindow().setAttributes(lp);
 

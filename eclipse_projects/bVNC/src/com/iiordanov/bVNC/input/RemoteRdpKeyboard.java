@@ -1,19 +1,16 @@
 package com.iiordanov.bVNC.input;
 
 import android.os.Handler;
-import android.os.SystemClock;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.iiordanov.bVNC.MetaKeyBean;
-import com.iiordanov.bVNC.RdpCommunicator;
-import com.iiordanov.bVNC.RfbConnectable;
 import com.iiordanov.bVNC.RemoteCanvas;
-import com.iiordanov.tigervnc.rfb.UnicodeToKeysym;
+import com.iiordanov.bVNC.RfbConnectable;
 
 public class RemoteRdpKeyboard extends RemoteKeyboard {
-    private final static String TAG = "RemoteRdpKeyboard";
+    final static String TAG = "RemoteRdpKeyboard";
         
     public RemoteRdpKeyboard (RfbConnectable r, RemoteCanvas v, Handler h) {
         super(r, v, h);

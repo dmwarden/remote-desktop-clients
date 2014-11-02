@@ -21,16 +21,15 @@
 package com.undatech.opaque.input;
 
 import android.os.Vibrator;
-import android.widget.RelativeLayout;
-import android.widget.ImageButton;
 import android.view.MotionEvent;
-import android.view.View.OnClickListener;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import com.undatech.opaque.R;
 import com.undatech.opaque.RemoteCanvas;
 import com.undatech.opaque.RemoteCanvasActivity;
-import com.undatech.opaque.input.RemotePointer;
 
 public class InputHandlerSingleHanded extends InputHandlerDirectSwipePan {
 	static final String TAG = "InputHandlerSingleHanded";
@@ -44,7 +43,7 @@ public class InputHandlerSingleHanded extends InputHandlerDirectSwipePan {
 	private ImageButton cancelButton;
 	int accumulatedScroll;
 
-	private int eventStartX, eventStartY, eventAction, eventMeta;
+	private int eventStartX, eventStartY, /*eventAction,*/ eventMeta;
 	private boolean needInitPan;
 	
 	public InputHandlerSingleHanded(RemoteCanvasActivity activity, RemoteCanvas canvas, Vibrator myVibrator) {
@@ -180,7 +179,7 @@ public class InputHandlerSingleHanded extends InputHandlerDirectSwipePan {
 		xInitialFocus = e.getX();
 		yInitialFocus = e.getY();
 		needInitPan   = true;
-		eventAction   = e.getAction();
+		//eventAction   = e.getAction();
 		eventMeta     = e.getMetaState();
 		singleHandOpts.setVisibility(View.VISIBLE);
 		

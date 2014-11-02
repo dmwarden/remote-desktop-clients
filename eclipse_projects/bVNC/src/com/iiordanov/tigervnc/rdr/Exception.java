@@ -19,7 +19,12 @@
 package com.iiordanov.tigervnc.rdr;
 
 public class Exception extends RuntimeException {
-  public Exception(String s) {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public Exception(String s) {
     super(s);
   }
 }

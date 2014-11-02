@@ -36,7 +36,7 @@ package com.jcraft.jzlib;
 
 final class Inflate {
 
-	static final private int MAX_WBITS = 15; // 32K LZ77 window
+	//static final private int MAX_WBITS = 15; // 32K LZ77 window
 
 	// preset dictionary flag in zlib header
 	static final private int PRESET_DICT = 0x20;
@@ -52,12 +52,12 @@ final class Inflate {
 	static final private int Z_OK = 0;
 	static final private int Z_STREAM_END = 1;
 	static final private int Z_NEED_DICT = 2;
-	static final private int Z_ERRNO = -1;
+	//static final private int Z_ERRNO = -1;
 	static final private int Z_STREAM_ERROR = -2;
 	static final private int Z_DATA_ERROR = -3;
-	static final private int Z_MEM_ERROR = -4;
+	//static final private int Z_MEM_ERROR = -4;
 	static final private int Z_BUF_ERROR = -5;
-	static final private int Z_VERSION_ERROR = -6;
+	//static final private int Z_VERSION_ERROR = -6;
 
 	static final private int METHOD = 0; // waiting for method byte
 	static final private int FLAG = 1; // waiting for flag byte

@@ -21,6 +21,7 @@
 package com.undatech.opaque;
 
 import java.util.TimerTask;
+
 import android.content.Context;
 import android.text.ClipboardManager;
 
@@ -29,8 +30,9 @@ import android.text.ClipboardManager;
  * a change is detected, sends the new contents to the server.
  */
 
+@SuppressWarnings("deprecation")
 public class ClipboardMonitor extends TimerTask {
-	private String TAG = "ClipboardMonitor";
+	String TAG = "ClipboardMonitor";
 	private Context context;
 	ClipboardManager clipboard;
 	private String knownClipboardContents;
